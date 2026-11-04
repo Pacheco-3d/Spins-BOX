@@ -1,0 +1,23 @@
+{
+  "name": "spins-box",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npm run build && node server.mjs",
+    "dev": "npm run build && node server.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node tests/run.js",
+    "export": "npm run build && node scripts/export.mjs",
+    "package:offline": "npm run export && python3 scripts/package_offline.py"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}

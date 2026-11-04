@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a20">
+  <meta name="description" content="Spins-BOX: um jogo de equilíbrio e raciocínio. Gire o bloco, descubra caminhos e encontre o portal.">
+  <title>Spins-BOX 3D · Encontre seu equilíbrio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='9' y='3' width='22' height='34' rx='5' fill='%23ed9c63'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <a class="brand" href="/" aria-label="Spins-BOX, início"><span class="brand-icon"><i></i><i></i><i></i></span>SPINS<span class="brand-light">—</span>BOX<span class="brand-dot">®</span></a>
+      <div class="header-center"><span class="live-dot"></span> PEQUENOS MOVIMENTOS. GRANDES DESAFIOS.</div>
+      <button id="sound" class="icon-button sound" aria-label="Ativar som" aria-pressed="false"><span id="sound-icon">♪</span><span id="sound-label">Som desligado</span></button>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">PERSPECTIVA MUDA TUDO</p><h1>Encontre seu <em>equilíbrio.</em></h1><p class="intro-description">Uma descoberta de cada vez. Um novo mundo a cada 20 níveis.</p></div>
+        <div class="edition"><span class="edition-lines">≋</span><div>FEITO PARA PENSAR<span>e jogar no seu tempo.</span></div></div>
+      </section>
+
+      <div class="game-layout">
+        <section class="game-panel" aria-label="Área do jogo">
+          <div class="game-topbar">
+            <div class="stage-label"><span class="stage-number" id="stage-number">01</span><div><span class="micro" id="deck-status" aria-live="polite">INICIANTE</span><h2 id="stage-name">Primeiros passos</h2></div></div>
+            <div class="game-tools"><button id="hint" class="icon-button hint-tool" title="Pedir uma dica" aria-label="Pedir uma dica">✧<span class="tool-label">Dica</span></button><button id="help" class="icon-button" title="Tutorial" aria-label="Abrir tutorial" aria-haspopup="dialog">?</button><button id="undo" class="icon-button" title="Desfazer (Z)" aria-label="Desfazer movimento">↶</button><span></span><button id="restart" class="icon-button" title="Reiniciar (R)" aria-label="Reiniciar fase">↻</button></div>
+          </div>
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="board" tabindex="0" aria-label="Tabuleiro 3D. Setas ou WASD movem o bloco, Q e E giram a câmera, Z desfaz."></canvas>
+            <div class="render-label"><span class="live-dot"></span><span id="render-mode">3D · QUEDAS DE PRECISÃO</span></div>
+            <div class="camera-controls" aria-label="Câmera 3D"><button id="camera-left" title="Girar câmera (Q)" aria-label="Girar câmera para a esquerda">↶</button><button id="camera-reset" title="Restaurar câmera (0)" aria-label="Restaurar câmera">⌖</button><button id="camera-right" title="Girar câmera (E)" aria-label="Girar câmera para a direita">↷</button></div>
+            <div id="notification" class="notification" role="status" aria-live="polite"></div>
+            <div id="advance-message" class="advance-message" role="status" aria-live="polite" hidden><span aria-hidden="true">✦</span><h2>Muito bem!</h2><p id="advance-text">Você avançou para o próximo nível.</p></div>
+            <div class="overlay" id="overlay" hidden>
+              <div class="result-card"><span class="result-icon" id="result-icon">✦</span><p class="eyebrow" id="result-eyebrow">BOM CAMINHO</p><h2 id="result-title">Equilíbrio encontrado.</h2><p id="result-text"></p><button class="primary-button" id="result-action">Próxima fase <span>→</span></button><button class="text-button" id="result-secondary">Jogar novamente</button></div>
+            </div>
+          </div>
+          <div class="game-bottom"><div class="move-stat"><span class="micro">MOVIMENTOS</span><strong id="moves">00</strong></div><div class="level-progress" id="level-progress" role="img" aria-label="Progresso de dificuldade"></div><div class="best-stat"><span class="micro">SEU RECORDE</span><strong id="best">—</strong></div></div>
+        </section>
+
+
+      </div>
+      <footer><span><i class="live-dot"></i> SEM CRONÔMETRO. EXPERIMENTE À VONTADE.</span><span>UM JOGO DE LÓGICA & PERSPECTIVA <span class="footer-symbol">✳</span></span></footer>
+    </main>
+  </div>
+  <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title">
+    <div class="help-heading"><h2 id="help-title">Tutorial</h2><button id="help-close" class="icon-button" aria-label="Fechar ajuda" autofocus>×</button></div>
+    <h3 id="mission-title">O encaixe perfeito.</h3>
+    <p id="mission-text">Leve o bloco até o portal, em pé.</p>
+    <p id="hint-text" class="help-hint">Deite, gire e levante.</p>
+    <p><strong>Setas ou WASD</strong> movem o bloco conforme a câmera. No celular, deslize um dedo sobre o jogo na direção desejada. Use dois dedos para girar ou aproximar a câmera.</p>
+    <p><kbd>Z</kbd> desfaz · <kbd>R</kbd> reinicia · <kbd>Q</kbd>/<kbd>E</kbd> giram a câmera · <kbd>0</kbd> restaura a vista.</p>
+    <p>Uma parte apoiada basta para manter o bloco estável. Use <strong>✧ Dica</strong> quando quiser uma pista. Não há limite de tentativas.</p>
+  </dialog>
+  <script type="module" src="/dist/game.js"></script>
+</body>
+</html>
