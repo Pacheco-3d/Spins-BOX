@@ -28,13 +28,14 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
       - name: Compilar jogo
-        run: npm run build
+        run: npm run export
       - name: Montar site estatico
         run: |
           mkdir -p site/src site/dist
           cp index.html site/index.html
           cp src/style.css site/src/style.css
           cp dist/game.js site/dist/game.js
+          cp dist/Spins-BOX.html site/JOGAR.html
           touch site/.nojekyll
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
